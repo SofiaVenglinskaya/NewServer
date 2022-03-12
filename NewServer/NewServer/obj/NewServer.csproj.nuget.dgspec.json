@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\studentdev\\Desktop\\NewServer\\NewServer\\NewServer.csproj": {}
+    "C:\\Users\\studentdev\\Documents\\GitHub\\NewServer\\NewServer\\NewServer\\NewServer.csproj": {}
   },
   "projects": {
-    "C:\\Users\\studentdev\\Desktop\\NewServer\\NewServer\\NewServer.csproj": {
+    "C:\\Users\\studentdev\\Documents\\GitHub\\NewServer\\NewServer\\NewServer\\NewServer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\studentdev\\Desktop\\NewServer\\NewServer\\NewServer.csproj",
+        "projectUniqueName": "C:\\Users\\studentdev\\Documents\\GitHub\\NewServer\\NewServer\\NewServer\\NewServer.csproj",
         "projectName": "NewServer",
-        "projectPath": "C:\\Users\\studentdev\\Desktop\\NewServer\\NewServer\\NewServer.csproj",
+        "projectPath": "C:\\Users\\studentdev\\Documents\\GitHub\\NewServer\\NewServer\\NewServer\\NewServer.csproj",
         "packagesPath": "C:\\Users\\studentdev\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\studentdev\\Desktop\\NewServer\\NewServer\\obj\\",
+        "outputPath": "C:\\Users\\studentdev\\Documents\\GitHub\\NewServer\\NewServer\\NewServer\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"
@@ -43,6 +43,12 @@
       "frameworks": {
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.22, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
