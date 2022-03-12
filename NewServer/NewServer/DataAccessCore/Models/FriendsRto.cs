@@ -10,12 +10,11 @@ namespace NewServer.DataAccessCore.Models
     public class FriendsRto
     {
         public int Id { get; set; }
-        public string Names { get; set; }
-        public UserRto FriendName { get; set; }
-        public string Surnames { get; set; }
-        public UserRto FriendSurname { get; set; }
-        public string Logins { get; set; }
-        public UserRto FriendLogin { get; set; }
+        public int FirstUserId { get; set; }
+        public UserRto FirstUser { get; set; }
+        public string SecondUserId { get; set; }
+        public UserRto SecondUser { get; set; }
+
         public int CountOfInvitations { get; set; }
 
 

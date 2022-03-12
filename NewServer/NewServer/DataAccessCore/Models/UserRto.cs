@@ -15,8 +15,11 @@ namespace NewServer.DataAccessCore.Models
         public string Password { get; set; }
         public string Login { get; set; }
 
-        public List<FriendsRto> UsersFriends { get; set; }
-        public List<InvitationRto> UsersInvitations { get; set; }
+        public List<FriendsRto> FirstFriend { get; set; }
+        public List<FriendsRto> SecondFriend { get; set; }
+
+        public List<InvitationRto> SendingInvitation { get; set; }
+        public List<InvitationRto> ReceivingInvitation { get; set; }
         public List<MessageRto> UsersMessages { get; set; }
     }
 }

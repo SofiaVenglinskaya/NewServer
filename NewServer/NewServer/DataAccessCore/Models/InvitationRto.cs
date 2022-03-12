@@ -10,12 +10,10 @@ namespace NewServer.DataAccessCore.Models
     public class InvitationRto
     {
         public int Id { get; set; }
-        public string Names { get; set; }
-        public UserRto SenderName { get; set; }
-        public string Surnames { get; set; }
-        public UserRto SenderSurname { get; set; }
-        public string Logins { get; set; }
-        public UserRto SenderLogin { get; set; }
+        public int SenderUserId { get; set; }
+        public UserRto SenderUser { get; set; }
+        public string RecieverUserId { get; set; }
+        public UserRto RecieverUser { get; set; }
         public int CountOfInvitations { get; set; }
     }
 }
