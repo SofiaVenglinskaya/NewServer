@@ -20,6 +20,7 @@ namespace NewServer.DataAccessCore.Models
 
         public List<InvitationRto> SendingInvitation { get; set; }
         public List<InvitationRto> ReceivingInvitation { get; set; }
-        public List<MessageRto> UsersMessages { get; set; }
+        public List<MessageRto> SendMessage { get; set; }
+        public List<MessageRto> GetMessage { get; set; }
     }
 }

@@ -13,7 +13,7 @@ namespace NewServer.DataAccessCore.Models
         public string Text { get; set; }
         public int SenderUserId { get; set; }
         public UserRto SenderUser { get; set; }
-        public string RecieverUserId { get; set; }
+        public int RecieverUserId { get; set; }
         public UserRto RecieverUser { get; set; }
         public DateTime DateOfSending { get; set; }
 

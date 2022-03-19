@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\studentDev\\Documents\\GitHub\\NewServer\\NewServer\\NewServer\\NewServer.csproj": {}
+    "C:\\Users\\studentdev\\Documents\\GitHub\\NewServer\\NewServer\\NewServer\\NewServer.csproj": {}
   },
   "projects": {
-    "C:\\Users\\studentDev\\Documents\\GitHub\\NewServer\\NewServer\\NewServer\\NewServer.csproj": {
+    "C:\\Users\\studentdev\\Documents\\GitHub\\NewServer\\NewServer\\NewServer\\NewServer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\studentDev\\Documents\\GitHub\\NewServer\\NewServer\\NewServer\\NewServer.csproj",
+        "projectUniqueName": "C:\\Users\\studentdev\\Documents\\GitHub\\NewServer\\NewServer\\NewServer\\NewServer.csproj",
         "projectName": "NewServer",
-        "projectPath": "C:\\Users\\studentDev\\Documents\\GitHub\\NewServer\\NewServer\\NewServer\\NewServer.csproj",
-        "packagesPath": "C:\\Users\\studentDev\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\studentDev\\Documents\\GitHub\\NewServer\\NewServer\\NewServer\\obj\\",
+        "projectPath": "C:\\Users\\studentdev\\Documents\\GitHub\\NewServer\\NewServer\\NewServer\\NewServer.csproj",
+        "packagesPath": "C:\\Users\\studentdev\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\studentdev\\Documents\\GitHub\\NewServer\\NewServer\\NewServer\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\studentDev\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\studentdev\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
@@ -45,6 +45,12 @@
           "targetAlias": "netcoreapp3.1",
           "dependencies": {
             "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.22, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
               "target": "Package",
               "version": "[3.1.22, )"
             },

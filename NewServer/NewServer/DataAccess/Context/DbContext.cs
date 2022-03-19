@@ -11,6 +11,10 @@ namespace NewServer.DataAccess.Context
     public class DbContext : Microsoft.EntityFrameworkCore.DbContext, IDbContext
 
     {
+        public DbContext(DbContextOptions<DbContext> options): base(options)
+        {
+
+        }
         public DbSet<UserRto> User { get; set; }
         public DbSet<FriendsRto> Friends { get; set; }
         public DbSet<InvitationRto> Invitation { get; set; }
@@ -64,14 +68,21 @@ namespace NewServer.DataAccess.Context
 
             modelBuilder.Entity<MessageRto>(builder =>
             {
+                builder.HasKey(a => new
+                {
+                    a.SenderUserId,
+                    a.RecieverUserId
+
+                }); 
+
                 builder
                 .HasOne<UserRto>(a => a.SenderUser)
-                .WithMany(a => a.UsersMessages)
+                .WithMany(a => a.SendMessage)
                 .HasForeignKey(a => a.SenderUserId)
                 .IsRequired();
                 builder
                 .HasOne<UserRto>(a => a.RecieverUser)
-                .WithMany(a => a.UsersMessages)
+                .WithMany(a => a.GetMessage)
                 .HasForeignKey(a => a.RecieverUserId)
                 .IsRequired();
             });

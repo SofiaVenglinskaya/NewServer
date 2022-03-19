@@ -12,7 +12,7 @@ namespace NewServer.DataAccessCore.Models
         public int Id { get; set; }
         public int SenderUserId { get; set; }
         public UserRto SenderUser { get; set; }
-        public string RecieverUserId { get; set; }
+        public int RecieverUserId { get; set; }
         public UserRto RecieverUser { get; set; }
         public int CountOfInvitations { get; set; }
     }
