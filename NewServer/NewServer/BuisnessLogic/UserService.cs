@@ -75,20 +75,19 @@ namespace NewServer.BuisnessLogic
 
         }
 
-        public async Task<UserInformationBlo> Update(UserInformationBlo userInformationBlo)
+        public async Task<UserInformationBlo> Update(UserInformationBlo userInformationBlo, UserIdentityBlo userIdentityBlo)
         {
-            if (await _context.User.AnyAsync(x => x.Login.ToLower() == userInformationBlo.Login!.ToLower()))
-                throw new BadRequestExeption($"Пользователь с логином {userInformationBlo.Login} уже существует");
-            UserRto userRto = new UserRto()
-            {
-                Login = userInformationBlo.Login,
-                Name = userInformationBlo.Name,
-                Surname = userInformationBlo.Surname
+            UserRto? user = await _context.User
                
-            };
-            _context.User.Update(userRto);
+                .FirstOrDefaultAsync(x => x.Login.ToLower() == userInformationBlo.Login!.ToLower());
+            if (user == null)
+            user.Login = userInformationBlo.Login == null ? user.Login : userInformationBlo.Login;
+            user.Name = userInformationBlo.Name == null ? user.Name : userInformationBlo.Name;
+            user.Password = userIdentityBlo.Password == null ? user.Password : userIdentityBlo.Password;
+
             await _context.SaveChangesAsync();
-            return userInformationBlo;
+            UserInformationBlo userInformation = _mapper.Map<UserInformationBlo>(user);
+            return userInformation;
         }
     }
 }

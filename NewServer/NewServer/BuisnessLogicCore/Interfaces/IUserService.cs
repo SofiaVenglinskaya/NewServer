@@ -10,7 +10,7 @@ namespace NewServer.BuisnessLogicCore.Interfaces
     {
         Task<UserIdentityBlo> Register(UserIdentityBlo userIdentityBlo);
         Task<UserInformationBlo> Get(int userId);
-        Task<UserInformationBlo> Update(UserInformationBlo userInformationBlo);
+        Task<UserInformationBlo> Update(UserInformationBlo userInformationBlo, UserIdentityBlo userIdentityBlo);
         Task<UserInformationBlo> Authenticate(UserIdentityBlo userIdentityBlo);
         Task MarkAsDeleted(int userId);
     }
