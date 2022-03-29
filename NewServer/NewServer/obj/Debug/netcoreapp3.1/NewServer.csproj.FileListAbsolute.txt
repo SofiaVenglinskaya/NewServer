@@ -60,3 +60,11 @@ C:\Users\studentdev\Documents\GitHub\NewServer\NewServer\NewServer\obj\Debug\net
 C:\Users\studentdev\Documents\GitHub\NewServer\NewServer\NewServer\obj\Debug\netcoreapp3.1\NewServer.pdb
 C:\Users\studentdev\Documents\GitHub\NewServer\NewServer\NewServer\obj\Debug\netcoreapp3.1\NewServer.genruntimeconfig.cache
 C:\Users\studentdev\Documents\GitHub\NewServer\NewServer\NewServer\obj\Debug\netcoreapp3.1\NewServer.csprojAssemblyReference.cache
+C:\Users\sofya\Documents\GitHub\NewServer\NewServer\NewServer\obj\Debug\netcoreapp3.1\NewServer.csproj.AssemblyReference.cache
+C:\Users\sofya\Documents\GitHub\NewServer\NewServer\NewServer\obj\Debug\netcoreapp3.1\NewServer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\sofya\Documents\GitHub\NewServer\NewServer\NewServer\obj\Debug\netcoreapp3.1\NewServer.AssemblyInfoInputs.cache
+C:\Users\sofya\Documents\GitHub\NewServer\NewServer\NewServer\obj\Debug\netcoreapp3.1\NewServer.AssemblyInfo.cs
+C:\Users\sofya\Documents\GitHub\NewServer\NewServer\NewServer\obj\Debug\netcoreapp3.1\NewServer.csproj.CoreCompileInputs.cache
+C:\Users\sofya\Documents\GitHub\NewServer\NewServer\NewServer\obj\Debug\netcoreapp3.1\NewServer.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\sofya\Documents\GitHub\NewServer\NewServer\NewServer\obj\Debug\netcoreapp3.1\NewServer.dll
+C:\Users\sofya\Documents\GitHub\NewServer\NewServer\NewServer\obj\Debug\netcoreapp3.1\NewServer.pdb

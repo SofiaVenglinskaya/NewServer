@@ -67,6 +67,7 @@ namespace NewServer.BuisnessLogic
             {
                 Login = userIdentityBlo.Login!,
                 Password = userIdentityBlo.Password!
+                
 
             };
             _context.User.Add(userRto);
@@ -80,7 +81,7 @@ namespace NewServer.BuisnessLogic
             UserRto? user = await _context.User
                
                 .FirstOrDefaultAsync(x => x.Login.ToLower() == userInformationBlo.Login!.ToLower());
-            if (user == null)
+            
             user.Login = userInformationBlo.Login == null ? user.Login : userInformationBlo.Login;
             user.Name = userInformationBlo.Name == null ? user.Name : userInformationBlo.Name;
             user.Password = userIdentityBlo.Password == null ? user.Password : userIdentityBlo.Password;

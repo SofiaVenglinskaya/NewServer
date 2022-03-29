@@ -18,7 +18,7 @@ namespace NewServer.DataAccess.Context
         public DbSet<UserRto> User { get; set; }
         public DbSet<FriendsRto> Friends { get; set; }
         public DbSet<InvitationRto> Invitation { get; set; }
-        public DbSet<MessageRto> Messages { get; set; }
+        public DbSet<MessageRto> Message { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

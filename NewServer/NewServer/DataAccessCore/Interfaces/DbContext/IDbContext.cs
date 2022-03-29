@@ -13,7 +13,7 @@ namespace NewServer.DataAccessCore.Interfaces.DbContext
          DbSet<UserRto> User { get; set; }
          DbSet<FriendsRto> Friends { get; set; }
          DbSet<InvitationRto> Invitation { get; set; }
-         DbSet<MessageRto> Messages { get; set; }
+         DbSet<MessageRto> Message { get; set; }
         Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
     }
 }

@@ -12,7 +12,7 @@ namespace NewServer.BuisnessLogicCore.Interfaces
         Task<List<MessageBlo>> Get(int userId);
         
         Task Delete(int messageId);
-        Task<MessageBlo> Change(MessageBlo messageText);
+        Task<MessageBlo> Change(MessageBlo messageBlo);
 
     }
 }
