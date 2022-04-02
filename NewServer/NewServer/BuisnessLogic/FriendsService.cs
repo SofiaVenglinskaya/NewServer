@@ -32,9 +32,19 @@ namespace NewServer.BuisnessLogic
             await _context.SaveChangesAsync();
         }
 
-        public async Task<List<FriendsBlo>> Get(int friendId)
+        public async Task<List<FriendsBlo>> Get(int friendId, int userId)
         {
-            throw new NotImplementedException();
+            var friendsList = await _context.Friends.
+                Where(e => e.FirstUserId == userId && e.SecondUserId == friendId).ToListAsync();
+            if (friendsList == null || friendsList.Count < 1) throw new ArgumentNullException(nameof(friendsList));
+            List<FriendsBlo> friendsBlo = new List<FriendsBlo>();
+            for (int i = 0; i < friendsList.Count; i++)
+            {
+                friendsBlo.Add(_mapper.Map<FriendsBlo>(friendsList[i]));
+            }
+            return friendsBlo;
+        
+
         }
     }
 }

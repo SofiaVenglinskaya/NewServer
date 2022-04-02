@@ -8,7 +8,7 @@ namespace NewServer.BuisnessLogicCore.Interfaces
 {
     interface IFriendsService
     {
-        Task<List<FriendsBlo>> Get(int friendId);
+        Task<List<FriendsBlo>> Get(int friendId, int userId);
         Task Delete(int userId, int friendId);
     }
 }

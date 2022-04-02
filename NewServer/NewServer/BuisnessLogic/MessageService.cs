@@ -43,9 +43,17 @@ namespace NewServer.BuisnessLogic
             await _context.SaveChangesAsync();
         }
 
-        public Task<List<MessageBlo>> Get(int userId)
+        public async Task<List<MessageBlo>> Get(int userId, int friendId)
         {
-            throw new NotImplementedException();
+            var messages = await _context.Message.
+                Where(e => e.RecieverUserId == userId && e.SenderUserId == friendId).ToListAsync();
+            if (messages == null || messages.Count < 1) throw new ArgumentNullException(nameof(messages));
+            List<MessageBlo> messagesBlo = new List<MessageBlo>();
+            for (int i = 0; i < messages.Count; i++)
+            {
+                messagesBlo.Add(_mapper.Map<MessageBlo>(messages[i]));
+            }
+            return messagesBlo;
         }
 
         public async Task<MessageBlo> Send(MessageBlo messageBlo)

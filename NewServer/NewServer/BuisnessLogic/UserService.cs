@@ -59,20 +59,20 @@ namespace NewServer.BuisnessLogic
             
         }
 
-        public async Task<UserIdentityBlo> Register(UserIdentityBlo userIdentityBlo)
+        public async Task<UserInformationBlo> Register(UserIdentityBlo userIdentityBlo)
         {
             if (await _context.User.AnyAsync(x => x.Login.ToLower() == userIdentityBlo.Login!.ToLower()))
                 throw new BadRequestExeption($"Пользователь с логином {userIdentityBlo.Login} уже существует");
             UserRto userRto = new UserRto()
             {
                 Login = userIdentityBlo.Login!,
-                Password = userIdentityBlo.Password!
+                Password = userIdentityBlo.Password!,
                 
-
             };
+            UserInformationBlo userInformationBlo = _mapper.Map<UserInformationBlo>(userRto);
             _context.User.Add(userRto);
             await _context.SaveChangesAsync();
-            return userIdentityBlo;
+            return userInformationBlo;
 
         }
 

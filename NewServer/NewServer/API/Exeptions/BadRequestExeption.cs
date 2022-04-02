@@ -12,4 +12,6 @@ namespace NewServer.API.Exeptions
 
         }
     }
+
+    
 }

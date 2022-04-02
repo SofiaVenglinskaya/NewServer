@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace NewServer.BuisnessLogicCore.Models
+namespace NewServer.API.Models
 {
-    public class UserIdentityBlo
+    public class UserIdentityDto
     {
-        public int Id { get; set; }
         public string? Login { get; set; }
         public string? Password { get; set; }
     }

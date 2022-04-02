@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace NewServer.BuisnessLogicCore.Interfaces
 {
-    interface IUserService
+   public interface IUserService
     {
-        Task<UserIdentityBlo> Register(UserIdentityBlo userIdentityBlo);
+        Task<UserInformationBlo> Register(UserIdentityBlo userIdentityBlo);
         Task<UserInformationBlo> Get(int userId);
         Task<UserInformationBlo> Update(UserInformationBlo userInformationBlo, UserIdentityBlo userIdentityBlo);
         Task<UserInformationBlo> Authenticate(UserIdentityBlo userIdentityBlo);

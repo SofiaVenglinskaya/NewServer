@@ -31,8 +31,8 @@ namespace NewServer.BuisnessLogic
                 throw new BadRequestExeption($"В списке заявок пользователя с Id {userId} нет пользователя с Id{friendId}");
             FriendsRto newFriend = new FriendsRto()
             {
-                SecondUser = friendsBlo.SenderUser,
-                FirstUser = friendsBlo.AccepterUser
+                SecondUser = friendsBlo.SecondUser,
+                FirstUser = friendsBlo.FirstUser
 
             };
             _context.Friends.Add(newFriend);
@@ -51,11 +51,6 @@ namespace NewServer.BuisnessLogic
         }
 
        
-        public Task<int> GetNumberOfFriendInvitations(int userId)
-        {
-            throw new NotImplementedException();
-        }
-
         public async Task Request(int userId, int friendId, UserInvitationsBlo invitationsBlo)
         {
             var friendRto = await _context.Invitation
@@ -72,9 +67,17 @@ namespace NewServer.BuisnessLogic
             await _context.SaveChangesAsync();
         }
 
-        public Task<List<UserInformationBlo>> UsersThatHaveSentFriendRequest(int userId)
+        public async Task<List<UserInvitationsBlo>> UsersThatHaveSentFriendRequest(int userId, int invId)
         {
-            throw new NotImplementedException();
+            var invitationsList = await _context.Invitation.
+                Where(e => e.RecieverUserId == userId && e.SenderUserId == invId).ToListAsync();
+            if (invitationsList == null || invitationsList.Count < 1) throw new ArgumentNullException(nameof(invitationsList));
+            List<UserInvitationsBlo> invitationssBlo = new List<UserInvitationsBlo>();
+            for (int i = 0; i < invitationsList.Count; i++)
+            {
+                invitationssBlo.Add(_mapper.Map<UserInvitationsBlo>(invitationsList[i]));
+            }
+            return invitationssBlo;
         }
     }
 }

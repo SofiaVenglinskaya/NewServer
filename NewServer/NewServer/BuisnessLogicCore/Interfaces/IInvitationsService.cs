@@ -11,8 +11,8 @@ namespace NewServer.BuisnessLogicCore.Interfaces
         Task Request(int userId, int friendId, UserInvitationsBlo invitationsBlo);
         Task Accept(int userId, int friendId, FriendsBlo friendsBlo);
         Task Deny(int userId, int friendId);
-        Task<int> GetNumberOfFriendInvitations(int userId);
-        Task<List<UserInformationBlo>> UsersThatHaveSentFriendRequest(int userId);
+ 
+        Task<List<UserInvitationsBlo>> UsersThatHaveSentFriendRequest(int userId, int invId);
 
 
     }

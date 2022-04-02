@@ -3,16 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace NewServer.BuisnessLogicCore.Models
+namespace NewServer.API.Models
 {
-    public class UserInformationBlo
+    public class UserInformationDto
     {
-        public string Id { get; set; }
         public string Login { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
-
-        
-         
     }
 }

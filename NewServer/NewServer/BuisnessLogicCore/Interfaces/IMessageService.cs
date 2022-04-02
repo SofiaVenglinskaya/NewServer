@@ -9,7 +9,7 @@ namespace NewServer.BuisnessLogicCore.Interfaces
     interface IMessageService
     {
         Task<MessageBlo> Send(MessageBlo messageBlo);
-        Task<List<MessageBlo>> Get(int userId);
+        Task<List<MessageBlo>> Get(int userId, int friendId);
         
         Task Delete(int messageId);
         Task<MessageBlo> Change(MessageBlo messageBlo);
