@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NewServer.BuisnessLogicCore.Interfaces
 {
-    interface IInvitationsService
+    public interface IInvitationsService
     {
         Task Request(int userId, int friendId, UserInvitationsBlo invitationsBlo);
         Task Accept(int userId, int friendId, FriendsBlo friendsBlo);

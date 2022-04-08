@@ -48,7 +48,7 @@ namespace NewServer.BuisnessLogic
 
         }
 
-        public async Task MarkAsDeleted(int userId)
+        public async Task Delete(int userId)
         {
             var userRto = await _context.User
                 .FirstOrDefaultAsync(e => (e.Id == userId));

@@ -45,8 +45,58 @@ namespace NewServer.API.Controllers
         {
             try
             {
-                userInformationBlo = await _userService
+                userInformationBlo = await _userService.Update(userInformationBlo, userIdentityBlo);
             }
+            catch(BadRequestExeption e)
+            {
+                return BadRequest(e.Message);
+            }
+            return Created("", _mapper.Map<UserInformationBlo>(userInformationBlo));
         }
+
+        [HttpGet("get")]
+        public async Task<ActionResult<UserInformationBlo>> Get(int userId)
+        {
+            UserInformationBlo userInformationBlo;
+            try
+            {
+                userInformationBlo = await _userService.Get(userId);
+            }
+            catch (BadRequestExeption e)
+            {
+                return BadRequest(e.Message);
+            }
+            return Ok( _mapper.Map<UserInformationBlo>(userInformationBlo));
+        }
+
+        [HttpDelete("delete")]
+        public async Task<ActionResult> Delete(int userId)
+        {
+            try
+            {
+                await _userService.Delete(userId);
+            }
+            catch (BadRequestExeption e)
+            {
+                return BadRequest(e.Message);
+            }
+            return Ok(0);
+            
+        }
+        [HttpGet("auth")]
+        public async Task<ActionResult<UserInformationBlo>> AuthAuthenticate(UserIdentityBlo userIdentityBlo)
+        {
+            UserInformationBlo userInformationBlo;
+            try
+            {
+                userInformationBlo = await _userService.Authenticate(userIdentityBlo);
+            }
+            catch (BadRequestExeption e)
+            {
+                return BadRequest(e.Message);
+            }
+            return Ok(_mapper.Map<UserInformationBlo>(userInformationBlo));
+        }
+
     }
 }
