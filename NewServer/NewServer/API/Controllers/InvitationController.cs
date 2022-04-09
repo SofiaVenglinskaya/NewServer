@@ -35,7 +35,7 @@ namespace NewServer.API.Controllers
                 return BadRequest(e.Message);
             }
 
-            return Created("", "");
+            return Ok("");
         }
 
         [HttpPost("request")]
@@ -79,7 +79,7 @@ namespace NewServer.API.Controllers
             {
                 return BadRequest(e.Message);
             }
-            return Ok(0);
+            return Ok("");
 
         }
     }

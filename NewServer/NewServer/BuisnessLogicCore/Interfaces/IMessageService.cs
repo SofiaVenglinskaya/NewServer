@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NewServer.BuisnessLogicCore.Interfaces
 {
-    interface IMessageService
+   public interface IMessageService
     {
         Task<MessageBlo> Send(MessageBlo messageBlo);
         Task<List<MessageBlo>> Get(int userId, int friendId);

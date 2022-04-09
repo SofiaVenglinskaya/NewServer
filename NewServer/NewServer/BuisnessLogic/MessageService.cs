@@ -66,6 +66,8 @@ namespace NewServer.BuisnessLogic
                 DateOfSending = messageBlo.DateOfSending
 
             };
+            if (messageBlo.Text == null)
+                throw new BadRequestExeption($"Сообщение пустое");
             _context.Message.Add(messageRto);
             await _context.SaveChangesAsync();
             return messageBlo;
