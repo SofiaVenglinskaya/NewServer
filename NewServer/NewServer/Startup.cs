@@ -1,3 +1,4 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -7,6 +8,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using NewServer.BuisnessLogic;
+using NewServer.BuisnessLogicCore.Interfaces;
 using NewServer.DataAccessCore.Interfaces.DbContext;
 using System;
 using System.Collections.Generic;
@@ -28,8 +31,14 @@ namespace NewServer
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddAutoMapper(typeof(BuisnessLogicProfile));
             services.AddDbContext<IDbContext, NewServer.DataAccess.Context.DbContext>(db => db.UseSqlite("Data Source=data.db; Foreign Keys=True"));
+            services.AddDbContext<NewServer.DataAccess.Context.DbContext>(db => db.UseSqlite("Data Source=data.db; Foreign Keys=True"));
             services.AddCors();
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IMessageService, MessageService>();
+            services.AddScoped<IInvitationsService, InvitationService>();
+            services.AddScoped<IFriendsService, FriendsService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,6 +56,8 @@ namespace NewServer
             app.UseAuthorization();
 
             using var scope = app.ApplicationServices.CreateScope();
+            var mapper = scope.ServiceProvider.GetRequiredService<IMapper>();
+            mapper.ConfigurationProvider.AssertConfigurationIsValid();
 
             var dbContext = scope.ServiceProvider
                 .GetRequiredService<NewServer.DataAccess.Context.DbContext>();

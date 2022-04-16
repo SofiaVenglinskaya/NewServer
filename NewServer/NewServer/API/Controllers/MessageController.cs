@@ -68,7 +68,7 @@ namespace NewServer.API.Controllers
         }
 
         [HttpDelete("delete")]
-        public async Task<ActionResult> Delete(int messageId)
+        public async Task<IActionResult> Delete(int messageId)
         {
             try
             {
@@ -78,7 +78,7 @@ namespace NewServer.API.Controllers
             {
                 return BadRequest(e.Message);
             }
-            return Ok("");
+            return Ok();
         }
 
     }

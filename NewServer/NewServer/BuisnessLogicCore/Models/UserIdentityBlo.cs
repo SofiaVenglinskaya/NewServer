@@ -8,7 +8,7 @@ namespace NewServer.BuisnessLogicCore.Models
     public class UserIdentityBlo
     {
         public int Id { get; set; }
-        public string? Login { get; set; }
-        public string? Password { get; set; }
+        public string Login { get; set; }
+        public string Password { get; set; }
     }
 }

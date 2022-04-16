@@ -19,7 +19,7 @@ namespace NewServer.BuisnessLogic
                 .ForMember(x => x.Surname, x => x.MapFrom(m => m.Surname));
 
             CreateMap<FriendsRto, FriendsBlo>()
-                .ForMember(x => x.FirstUser, x => x.MapFrom(m => m.FirstUserId))
+                .ForMember(x => x.FirstUser, x => x.MapFrom(m => m.FirstUser))
                 .ForMember(x => x.SecondUser, x => x.MapFrom(m => m.SecondUser));
 
             CreateMap<InvitationRto, UserInvitationsBlo>()

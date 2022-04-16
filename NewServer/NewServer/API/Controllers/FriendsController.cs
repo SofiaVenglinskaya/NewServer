@@ -40,7 +40,7 @@ namespace NewServer.API.Controllers
         }
 
         [HttpDelete("delete")]
-        public async Task<ActionResult> Delete(int userId, int friendId)
+        public async Task<IActionResult> Delete(int userId, int friendId)
         {
             try
             {
@@ -50,7 +50,7 @@ namespace NewServer.API.Controllers
             {
                 return BadRequest(e.Message);
             }
-            return Ok(0);
+            return Ok();
 
         }
     }

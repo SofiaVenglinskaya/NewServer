@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NewServer.API.Exeptions;
 using NewServer.BuisnessLogicCore.Interfaces;
@@ -23,6 +24,7 @@ namespace NewServer.BuisnessLogic
             _mapper = mapper;
             _context = context;
         }
+        [HttpPatch("change")]
         public async Task<MessageBlo> Change(MessageBlo messageBlo)
         {
             MessageRto message = await _context.Message
@@ -32,7 +34,7 @@ namespace NewServer.BuisnessLogic
             MessageBlo messageText = _mapper.Map<MessageBlo>(message);
             return messageBlo;
         }
-
+        [HttpDelete("delete")]
         public async Task Delete(int messageId)
         {
             var message = await _context.Message
@@ -42,7 +44,7 @@ namespace NewServer.BuisnessLogic
             _context.Message.Remove(message);
             await _context.SaveChangesAsync();
         }
-
+        [HttpGet("get")]
         public async Task<List<MessageBlo>> Get(int userId, int friendId)
         {
             var messages = await _context.Message.
@@ -55,7 +57,7 @@ namespace NewServer.BuisnessLogic
             }
             return messagesBlo;
         }
-
+        [HttpPost("send")]
         public async Task<MessageBlo> Send(MessageBlo messageBlo)
         {
             MessageRto messageRto = new MessageRto()

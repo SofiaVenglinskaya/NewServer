@@ -40,7 +40,7 @@ namespace NewServer.API.Controllers
             return Created("", _mapper.Map<UserInformationBlo>(userInformationBlo));
         }
 
-        [HttpPost("update")]
+        [HttpPatch("update")]
         public async Task<ActionResult<UserInformationBlo>> Update(UserInformationBlo userInformationBlo, UserIdentityBlo userIdentityBlo)
         {
             try
@@ -70,7 +70,7 @@ namespace NewServer.API.Controllers
         }
 
         [HttpDelete("delete")]
-        public async Task<ActionResult> Delete(int userId)
+        public async Task<IActionResult> Delete(int userId)
         {
             try
             {
@@ -79,8 +79,9 @@ namespace NewServer.API.Controllers
             catch (BadRequestExeption e)
             {
                 return BadRequest(e.Message);
+                
             }
-            return Ok("");
+            return Ok();
             
         }
         [HttpGet("auth")]

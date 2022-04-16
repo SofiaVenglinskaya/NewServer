@@ -24,7 +24,7 @@ namespace NewServer.API.Controllers
         }
 
         [HttpPost("accept")]
-        public async Task<ActionResult> Accept(int userId, int friendId, FriendsBlo friendsBlo)
+        public async Task<IActionResult> Accept(int userId, int friendId, FriendsBlo friendsBlo)
         {
             try
             {
@@ -34,12 +34,12 @@ namespace NewServer.API.Controllers
             {
                 return BadRequest(e.Message);
             }
+            return Ok();
 
-            return Ok("");
         }
 
         [HttpPost("request")]
-        public new async Task<ActionResult> Request(int userId, int friendId, UserInvitationsBlo invitationsBlo)
+        public new async Task<IActionResult> Request(int userId, int friendId, UserInvitationsBlo invitationsBlo)
         {
             try
             {
@@ -50,7 +50,7 @@ namespace NewServer.API.Controllers
                 return BadRequest(e.Message);
             }
 
-            return Created("", "");
+            return Ok();
         }
 
         [HttpGet("usersrequests")]
@@ -79,8 +79,7 @@ namespace NewServer.API.Controllers
             {
                 return BadRequest(e.Message);
             }
-            return Ok("");
-
+            return Ok();
         }
     }
 }
