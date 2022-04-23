@@ -25,14 +25,18 @@ namespace NewServer.BuisnessLogic
         }
         public async Task Accept(int userId, int friendId, FriendsBlo friendsBlo)
         {
-            var friendRto = await _context.Invitation
-                .FirstOrDefaultAsync(e => e.RecieverUserId == userId && e.SenderUserId == friendId);
-            if (friendRto == null)
-                throw new BadRequestExeption($"В списке заявок пользователя с Id {userId} нет пользователя с Id{friendId}");
+            var firstFriend = await _context.Invitation.
+                AnyAsync(x => x.SenderUserId == userId);
+            if (firstFriend == false)
+                throw new DllNotFoundException($"Пользователя с Id {userId} не существует");
+            var secondFriend = await _context.Invitation.
+                AnyAsync(x => x.RecieverUserId == friendId);
+            if (secondFriend == false)
+                throw new DllNotFoundException($"Пользователя с Id {friendId} не существует");
             FriendsRto newFriend = new FriendsRto()
             {
-                SecondUser = friendsBlo.SecondUser,
-                FirstUser = friendsBlo.FirstUser
+                SecondUserId = friendsBlo.SecondUserId,
+                FirstUserId = friendsBlo.FirstUserId
 
             };
             _context.Friends.Add(newFriend);
@@ -42,25 +46,29 @@ namespace NewServer.BuisnessLogic
 
         public async Task Deny(int userId, int friendId)
         {
-            var friendD = await _context.Invitation
-               .FirstOrDefaultAsync(e => e.RecieverUserId == userId && e.SenderUserId == friendId);
-            if (friendD == null)
+            var invitation = await _context.Invitation
+                .FirstOrDefaultAsync(e => e.SenderUserId == userId && e.RecieverUserId == friendId);
+            if (invitation == null)
                 throw new BadRequestExeption($"В списке заявок пользователя с Id {userId} нет пользователя с Id{friendId}");
-            _context.Invitation.Remove(friendD);
+            _context.Invitation.Remove(invitation);
             await _context.SaveChangesAsync();
         }
 
        
         public async Task Request(int userId, int friendId, UserInvitationsBlo invitationsBlo)
         {
-            var friendRto = await _context.Invitation
-                .FirstOrDefaultAsync(e => e.RecieverUserId == friendId && e.SenderUserId == userId);
-            if (friendRto == null)
-                throw new BadRequestExeption($"Пользователя с Id {friendId} или {userId} не существует");
+            var firstFriend = await _context.User.
+                AnyAsync(x => x.Id == userId);
+            if (firstFriend == false)
+                throw new DllNotFoundException($"Пользователя с Id {userId} не существует");
+            var secondFriend = await _context.User.
+                AnyAsync(x => x.Id == userId);
+            if (secondFriend == false)
+                throw new DllNotFoundException($"Пользователя с Id {friendId} не существует");
             InvitationRto newInvitation = new InvitationRto()
             {
-                RecieverUser = invitationsBlo.AccepterUser,
-                SenderUser = invitationsBlo.SenderUser
+                RecieverUserId = invitationsBlo.AccepterUserId,
+                SenderUserId = invitationsBlo.SenderUserId
 
             };
             _context.Invitation.Add(newInvitation);
@@ -71,13 +79,14 @@ namespace NewServer.BuisnessLogic
         {
             var invitationsList = await _context.Invitation.
                 Where(e => e.RecieverUserId == userId && e.SenderUserId == invId).ToListAsync();
-            if (invitationsList == null || invitationsList.Count < 1) throw new ArgumentNullException(nameof(invitationsList));
-            List<UserInvitationsBlo> invitationssBlo = new List<UserInvitationsBlo>();
+            if (invitationsList == null) 
+                throw new ArgumentNullException(nameof(invitationsList));
+            List<UserInvitationsBlo> invitationsBlo = new List<UserInvitationsBlo>();
             for (int i = 0; i < invitationsList.Count; i++)
             {
-                invitationssBlo.Add(_mapper.Map<UserInvitationsBlo>(invitationsList[i]));
+                invitationsBlo.Add(_mapper.Map<UserInvitationsBlo>(invitationsList[i]));
             }
-            return invitationssBlo;
+            return invitationsBlo;
         }
     }
 }

@@ -38,7 +38,7 @@ namespace NewServer.API.Controllers
 
             return Ok( _mapper.Map<MessageBlo>(messageBlo));
         }
-         [HttpGet("get")]
+         [HttpGet("get/{userId}/{friendId}")]
          public async Task<ActionResult<List<MessageBlo>>> Get(int userId, int friendId)
         {
             List<MessageBlo> messageBlo;
@@ -67,7 +67,7 @@ namespace NewServer.API.Controllers
             return Ok(_mapper.Map<MessageBlo>(messageBlo));
         }
 
-        [HttpDelete("delete")]
+        [HttpDelete("delete/{messageId}")]
         public async Task<IActionResult> Delete(int messageId)
         {
             try

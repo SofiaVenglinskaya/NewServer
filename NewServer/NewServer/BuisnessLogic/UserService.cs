@@ -76,7 +76,7 @@ namespace NewServer.BuisnessLogic
 
         }
 
-        public async Task<UserInformationBlo> Update(UserInformationBlo userInformationBlo, UserIdentityBlo userIdentityBlo)
+        public async Task<UserInformationBlo> Update(UserInformationBlo userInformationBlo)
         {
             UserRto? user = await _context.User
                
@@ -84,7 +84,7 @@ namespace NewServer.BuisnessLogic
             
             user.Login = userInformationBlo.Login == null ? user.Login : userInformationBlo.Login;
             user.Name = userInformationBlo.Name == null ? user.Name : userInformationBlo.Name;
-            user.Password = userIdentityBlo.Password == null ? user.Password : userIdentityBlo.Password;
+            
 
             await _context.SaveChangesAsync();
             UserInformationBlo userInformation = _mapper.Map<UserInformationBlo>(user);

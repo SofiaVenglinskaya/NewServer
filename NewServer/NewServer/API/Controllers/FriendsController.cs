@@ -24,7 +24,7 @@ namespace NewServer.API.Controllers
             _friendsService = friendsService;
         }
 
-        [HttpGet("get")]
+        [HttpGet("get/{userId}/{friendId}")]
         public async Task<ActionResult<List<FriendsBlo>>> Get(int userId, int friendId)
         {
             List<FriendsBlo> friendsBlo;
@@ -39,7 +39,7 @@ namespace NewServer.API.Controllers
             return Ok(_mapper.Map<FriendsBlo>(friendsBlo));
         }
 
-        [HttpDelete("delete")]
+        [HttpDelete("delete/{userId}/{friendId}")]
         public async Task<IActionResult> Delete(int userId, int friendId)
         {
             try

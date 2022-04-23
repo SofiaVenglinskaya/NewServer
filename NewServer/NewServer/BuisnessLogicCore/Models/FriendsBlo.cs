@@ -9,7 +9,7 @@ namespace NewServer.BuisnessLogicCore.Models
     public class FriendsBlo
     {
 
-        public UserRto SecondUser { get; set; }
-        public UserRto FirstUser { get; set; }
+        public int SecondUserId { get; set; }
+        public int FirstUserId { get; set; }
     }
 }

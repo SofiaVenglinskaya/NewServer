@@ -41,11 +41,11 @@ namespace NewServer.API.Controllers
         }
 
         [HttpPatch("update")]
-        public async Task<ActionResult<UserInformationBlo>> Update(UserInformationBlo userInformationBlo, UserIdentityBlo userIdentityBlo)
+        public async Task<ActionResult<UserInformationBlo>> Update(UserInformationBlo userInformationBlo)
         {
             try
             {
-                userInformationBlo = await _userService.Update(userInformationBlo, userIdentityBlo);
+                userInformationBlo = await _userService.Update(userInformationBlo);
             }
             catch(BadRequestExeption e)
             {
@@ -54,7 +54,7 @@ namespace NewServer.API.Controllers
             return Created("", _mapper.Map<UserInformationBlo>(userInformationBlo));
         }
 
-        [HttpGet("get")]
+        [HttpGet("get/{userId}")]
         public async Task<ActionResult<UserInformationBlo>> Get(int userId)
         {
             UserInformationBlo userInformationBlo;
@@ -69,7 +69,7 @@ namespace NewServer.API.Controllers
             return Ok( _mapper.Map<UserInformationBlo>(userInformationBlo));
         }
 
-        [HttpDelete("delete")]
+        [HttpDelete("delete/{userId}")]
         public async Task<IActionResult> Delete(int userId)
         {
             try

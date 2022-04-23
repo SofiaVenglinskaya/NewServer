@@ -59,7 +59,6 @@ C:\Users\studentdev\Documents\GitHub\NewServer\NewServer\NewServer\obj\Debug\net
 C:\Users\studentdev\Documents\GitHub\NewServer\NewServer\NewServer\obj\Debug\netcoreapp3.1\NewServer.dll
 C:\Users\studentdev\Documents\GitHub\NewServer\NewServer\NewServer\obj\Debug\netcoreapp3.1\NewServer.pdb
 C:\Users\studentdev\Documents\GitHub\NewServer\NewServer\NewServer\obj\Debug\netcoreapp3.1\NewServer.genruntimeconfig.cache
-C:\Users\studentdev\Documents\GitHub\NewServer\NewServer\NewServer\obj\Debug\netcoreapp3.1\NewServer.csprojAssemblyReference.cache
 C:\Users\sofya\Documents\GitHub\NewServer\NewServer\NewServer\obj\Debug\netcoreapp3.1\NewServer.csproj.AssemblyReference.cache
 C:\Users\sofya\Documents\GitHub\NewServer\NewServer\NewServer\obj\Debug\netcoreapp3.1\NewServer.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\sofya\Documents\GitHub\NewServer\NewServer\NewServer\obj\Debug\netcoreapp3.1\NewServer.AssemblyInfoInputs.cache
@@ -71,3 +70,4 @@ C:\Users\sofya\Documents\GitHub\NewServer\NewServer\NewServer\obj\Debug\netcorea
 C:\Users\studentdev\Documents\GitHub\NewServer\NewServer\NewServer\bin\Debug\netcoreapp3.1\AutoMapper.dll
 C:\Users\studentdev\Documents\GitHub\NewServer\NewServer\NewServer\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\studentdev\Documents\GitHub\NewServer\NewServer\NewServer\bin\Debug\netcoreapp3.1\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\studentdev\Documents\GitHub\NewServer\NewServer\NewServer\obj\Debug\netcoreapp3.1\NewServer.csprojAssemblyReference.cache

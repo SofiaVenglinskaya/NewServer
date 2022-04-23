@@ -8,8 +8,8 @@ using NewServer.DataAccess.Context;
 
 namespace NewServer.Migrations
 {
-    [DbContext(typeof(DataAccess.Context.DbContext))]
-    [Migration("20220319133441_InitialCreate")]
+    [DbContext(typeof(Context))]
+    [Migration("20220423124442_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -88,6 +88,9 @@ namespace NewServer.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("IsDeleted")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Login")

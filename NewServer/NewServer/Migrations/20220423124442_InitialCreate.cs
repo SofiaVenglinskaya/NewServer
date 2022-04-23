@@ -16,7 +16,8 @@ namespace NewServer.Migrations
                     Name = table.Column<string>(nullable: true),
                     Surname = table.Column<string>(nullable: true),
                     Password = table.Column<string>(nullable: true),
-                    Login = table.Column<string>(nullable: true)
+                    Login = table.Column<string>(nullable: true),
+                    IsDeleted = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {

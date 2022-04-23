@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace NewServer.DataAccess.Context
 {
-    public class DbContext : Microsoft.EntityFrameworkCore.DbContext, IDbContext
+    public class Context : Microsoft.EntityFrameworkCore.DbContext, IDbContext
 
     {
-        public DbContext(DbContextOptions<DbContext> options): base(options)
+        public Context(DbContextOptions<Context> options): base(options)
         {
 
         }

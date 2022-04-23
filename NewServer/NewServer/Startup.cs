@@ -32,8 +32,8 @@ namespace NewServer
         {
             services.AddControllers();
             services.AddAutoMapper(typeof(BuisnessLogicProfile));
-            services.AddDbContext<IDbContext, NewServer.DataAccess.Context.DbContext>(db => db.UseSqlite("Data Source=data.db; Foreign Keys=True"));
-            services.AddDbContext<NewServer.DataAccess.Context.DbContext>(db => db.UseSqlite("Data Source=data.db; Foreign Keys=True"));
+            services.AddDbContext<IDbContext, NewServer.DataAccess.Context.Context>(db => db.UseSqlite("Data Source=data.db; Foreign Keys=True"));
+            services.AddDbContext<NewServer.DataAccess.Context.Context>(db => db.UseSqlite("Data Source=data.db; Foreign Keys=True"));
             services.AddCors();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IMessageService, MessageService>();
@@ -60,7 +60,7 @@ namespace NewServer
             mapper.ConfigurationProvider.AssertConfigurationIsValid();
 
             var dbContext = scope.ServiceProvider
-                .GetRequiredService<NewServer.DataAccess.Context.DbContext>();
+                .GetRequiredService<NewServer.DataAccess.Context.Context>();
             dbContext.Database.Migrate();
 
             app.UseEndpoints(endpoints =>

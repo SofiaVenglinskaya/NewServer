@@ -23,8 +23,8 @@ namespace NewServer.API.Controllers
             _invitationsService = invitationsService;
         }
 
-        [HttpPost("accept")]
-        public async Task<IActionResult> Accept(int userId, int friendId, FriendsBlo friendsBlo)
+        [HttpPost("accept/{userId}/{friendId}")]
+        public async Task<IActionResult> Accept([FromRoute]int userId, [FromRoute]int friendId, [FromBody]FriendsBlo friendsBlo)
         {
             try
             {
@@ -38,8 +38,8 @@ namespace NewServer.API.Controllers
 
         }
 
-        [HttpPost("request")]
-        public new async Task<IActionResult> Request(int userId, int friendId, UserInvitationsBlo invitationsBlo)
+        [HttpPost("request/{userId}/{friendId}")]
+        public new async Task<IActionResult> Request([FromRoute]int userId, [FromRoute]int friendId, [FromBody]UserInvitationsBlo invitationsBlo)
         {
             try
             {
@@ -53,22 +53,22 @@ namespace NewServer.API.Controllers
             return Ok();
         }
 
-        [HttpGet("usersrequests")]
-        public async Task<ActionResult<List<UserInvitationsBlo>>> UsersThatHaveSentFriendRequest(int userId, int friendId)
+        [HttpGet("usersrequests/{userId}/{invId}")]
+        public async Task<ActionResult<List<UserInvitationsBlo>>> UsersThatHaveSentFriendRequest(int userId, int invId)
         {
             List<UserInvitationsBlo> invitationsBlo;
             try
             {
-                invitationsBlo = await _invitationsService.UsersThatHaveSentFriendRequest(userId, friendId);
+                invitationsBlo = await _invitationsService.UsersThatHaveSentFriendRequest(userId, invId);
             }
             catch (BadRequestExeption e)
             {
                 return BadRequest(e.Message);
             }
-            return Ok(_mapper.Map<UserInvitationsBlo>(invitationsBlo));
+            return Ok(_mapper.Map<List<UserInvitationsBlo>>(invitationsBlo));
         }
 
-        [HttpDelete("deny")]
+        [HttpDelete("deny/{userId}/{friendId}")]
         public async Task<ActionResult> Deny(int userId, int friendId)
         {
             try

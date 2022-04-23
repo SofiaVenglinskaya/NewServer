@@ -13,18 +13,18 @@ namespace NewServer.BuisnessLogic
         public BuisnessLogicProfile()
         {
             CreateMap<UserRto, UserInformationBlo>()
-                .ForMember(x => x.Id, x => x.MapFrom(m => m.Id))
+                
                 .ForMember(x => x.Login, x => x.MapFrom(m => m.Login))
                 .ForMember(x => x.Name, x => x.MapFrom(m => m.Name))
                 .ForMember(x => x.Surname, x => x.MapFrom(m => m.Surname));
 
             CreateMap<FriendsRto, FriendsBlo>()
-                .ForMember(x => x.FirstUser, x => x.MapFrom(m => m.FirstUser))
-                .ForMember(x => x.SecondUser, x => x.MapFrom(m => m.SecondUser));
+                .ForMember(x => x.FirstUserId, x => x.MapFrom(m => m.FirstUserId))
+                .ForMember(x => x.SecondUserId, x => x.MapFrom(m => m.SecondUserId));
 
             CreateMap<InvitationRto, UserInvitationsBlo>()
-                .ForMember(x => x.SenderUser, x => x.MapFrom(m => m.SenderUser))
-                .ForMember(x => x.AccepterUser, x => x.MapFrom(m => m.RecieverUser));
+                .ForMember(x => x.SenderUserId, x => x.MapFrom(m => m.SenderUserId))
+                .ForMember(x => x.AccepterUserId, x => x.MapFrom(m => m.RecieverUserId));
 
             CreateMap<MessageRto, MessageBlo>()
                 .ForMember(x => x.Id, x => x.MapFrom(m => m.Id))
@@ -34,7 +34,7 @@ namespace NewServer.BuisnessLogic
                 .ForMember(x => x.DateOfSending, x => x.MapFrom(m => m.DateOfSending));
 
             CreateMap<UserRto, UserIdentityBlo>()
-                .ForMember(x => x.Id, x => x.MapFrom(m => m.Id))
+                
                 .ForMember(x => x.Login, x => x.MapFrom(m => m.Login))
                 .ForMember(x => x.Password, x => x.MapFrom(m => m.Password));
 

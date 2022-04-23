@@ -8,7 +8,7 @@ namespace NewServer.BuisnessLogicCore.Models
 {
     public class UserInvitationsBlo
     {
-        public UserRto SenderUser { get; set; }
-        public UserRto AccepterUser { get; set; }
+        public int SenderUserId { get; set; }
+        public int AccepterUserId { get; set; }
     }
 }
