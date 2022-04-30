@@ -8,7 +8,7 @@ namespace NewServer.BuisnessLogicCore.Models
 {
     public class MessageBlo
     {
-        
+        public int? Id { get; set; }
         public string Text { get; set; }
         public int SenderUserId { get; set; }
         public int RecieverUserId { get; set; }

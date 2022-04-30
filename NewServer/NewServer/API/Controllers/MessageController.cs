@@ -29,14 +29,15 @@ namespace NewServer.API.Controllers
         {
             try
             {
-                 await _messageService.Send(messageBlo);
+                MessageBlo message = await _messageService.Send(messageBlo);
+                return Ok(_mapper.Map<MessageBlo>(message));
             }
             catch (BadRequestExeption e)
             {
                 return BadRequest(e.Message);
             }
 
-            return Ok( _mapper.Map<MessageBlo>(messageBlo));
+            
         }
          [HttpGet("get/{userId}/{friendId}")]
          public async Task<ActionResult<List<MessageBlo>>> Get(int userId, int friendId)

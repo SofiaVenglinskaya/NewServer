@@ -9,7 +9,7 @@ using NewServer.DataAccess.Context;
 namespace NewServer.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20220423124442_InitialCreate")]
+    [Migration("20220430144133_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

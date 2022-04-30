@@ -27,7 +27,7 @@ namespace NewServer.BuisnessLogic
                 .ForMember(x => x.AccepterUserId, x => x.MapFrom(m => m.RecieverUserId));
 
             CreateMap<MessageRto, MessageBlo>()
-                
+                 .ForMember(x => x.Id, x => x.MapFrom(m => m.Id))
                 .ForMember(x => x.Text, x => x.MapFrom(m => m.Text))
                 .ForMember(x => x.SenderUserId, x => x.MapFrom(m => m.SenderUserId))
                 .ForMember(x => x.RecieverUserId, x => x.MapFrom(m => m.RecieverUserId))

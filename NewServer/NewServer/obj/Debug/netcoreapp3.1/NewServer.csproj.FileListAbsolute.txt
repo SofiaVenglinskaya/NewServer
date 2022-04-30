@@ -69,7 +69,6 @@ C:\Users\sofya\Documents\GitHub\NewServer\NewServer\NewServer\obj\Debug\netcorea
 C:\Users\studentdev\Documents\GitHub\NewServer\NewServer\NewServer\bin\Debug\netcoreapp3.1\AutoMapper.dll
 C:\Users\studentdev\Documents\GitHub\NewServer\NewServer\NewServer\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\studentdev\Documents\GitHub\NewServer\NewServer\NewServer\bin\Debug\netcoreapp3.1\System.Runtime.CompilerServices.Unsafe.dll
-C:\Users\studentdev\Documents\GitHub\NewServer\NewServer\NewServer\obj\Debug\netcoreapp3.1\NewServer.csprojAssemblyReference.cache
 C:\Users\sofya\Documents\GitHub\NewServer\NewServer\NewServer\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\Users\sofya\Documents\GitHub\NewServer\NewServer\NewServer\bin\Debug\netcoreapp3.1\appsettings.json
 C:\Users\sofya\Documents\GitHub\NewServer\NewServer\NewServer\bin\Debug\netcoreapp3.1\NewServer.exe

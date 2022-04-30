@@ -49,7 +49,7 @@ namespace NewServer.BuisnessLogic
         public async Task<List<MessageBlo>> Get(int userId, int friendId)
         {
             var messages = await _context.Message.
-                Where(e => e.RecieverUserId == userId && e.SenderUserId == friendId).ToListAsync();
+                Where(e => e.RecieverUserId == userId && e.SenderUserId == friendId || e.RecieverUserId == friendId && e.SenderUserId == userId).ToListAsync();
             if (messages == null) throw new ArgumentNullException(nameof(messages));
             List<MessageBlo> messagesBlo = new List<MessageBlo>();
             for (int i = 0; i < messages.Count; i++)
@@ -70,20 +70,14 @@ namespace NewServer.BuisnessLogic
 
             };
 
-            MessageRto messagerto = new MessageRto()
-            {
-                Text = messageBlo.Text!,
-                SenderUserId = messageBlo.RecieverUserId!,
-                RecieverUserId = messageBlo.SenderUserId!,
-                DateOfSending = messageBlo.DateOfSending
-
-            };
+           
             if (messageBlo.Text == null)
                 throw new BadRequestExeption($"Сообщение пустое");
             _context.Message.Add(messageRto);
-            _context.Message.Add(messagerto);
+            
             await _context.SaveChangesAsync();
-            return messageBlo;
+           return  _mapper.Map<MessageBlo>(messageRto);
+            
         }
     }
 }

@@ -66,25 +66,25 @@ namespace NewServer.DataAccess.Context
 
             });
 
-            modelBuilder.Entity<MessageRto>(builder =>
+           modelBuilder.Entity<MessageRto>(builder =>
             {
-                builder.HasKey(a => new
-                {
-                    a.SenderUserId,
-                    a.RecieverUserId
+                //builder.HasKey(a => new
+                //{
+                //    a.SenderUserId,
+                //    a.RecieverUserId
 
-                }); 
+                //}); 
 
                 builder
                 .HasOne<UserRto>(a => a.SenderUser)
                 .WithMany(a => a.SendMessage)
-                .HasForeignKey(a => a.SenderUserId)
-                .IsRequired();
+                .HasForeignKey(a => a.SenderUserId);
+
                 builder
                 .HasOne<UserRto>(a => a.RecieverUser)
                 .WithMany(a => a.GetMessage)
-                .HasForeignKey(a => a.RecieverUserId)
-                .IsRequired();
+                .HasForeignKey(a => a.RecieverUserId);
+                
             });
             }
     }
