@@ -39,7 +39,14 @@ namespace NewServer.BuisnessLogic
                 FirstUserId = friendsBlo.FirstUserId
 
             };
+            FriendsRto newfriend = new FriendsRto()
+            {
+                SecondUserId = friendsBlo.FirstUserId,
+                FirstUserId = friendsBlo.SecondUserId
+
+            };
             _context.Friends.Add(newFriend);
+            _context.Friends.Add(newfriend);
             await _context.SaveChangesAsync();
             
         }
@@ -47,7 +54,7 @@ namespace NewServer.BuisnessLogic
         public async Task Deny(int userId, int friendId)
         {
             var invitation = await _context.Invitation
-                .FirstOrDefaultAsync(e => e.SenderUserId == userId && e.RecieverUserId == friendId);
+                .FirstOrDefaultAsync(e => e.SenderUserId == friendId && e.RecieverUserId == userId);
             if (invitation == null)
                 throw new BadRequestExeption($"В списке заявок пользователя с Id {userId} нет пользователя с Id{friendId}");
             _context.Invitation.Remove(invitation);

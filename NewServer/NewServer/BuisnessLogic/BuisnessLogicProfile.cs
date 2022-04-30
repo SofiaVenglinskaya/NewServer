@@ -27,10 +27,10 @@ namespace NewServer.BuisnessLogic
                 .ForMember(x => x.AccepterUserId, x => x.MapFrom(m => m.RecieverUserId));
 
             CreateMap<MessageRto, MessageBlo>()
-                .ForMember(x => x.Id, x => x.MapFrom(m => m.Id))
+                
                 .ForMember(x => x.Text, x => x.MapFrom(m => m.Text))
-                .ForMember(x => x.SenderUser, x => x.MapFrom(m => m.SenderUser))
-                .ForMember(x => x.RecieverUser, x => x.MapFrom(m => m.RecieverUser))
+                .ForMember(x => x.SenderUserId, x => x.MapFrom(m => m.SenderUserId))
+                .ForMember(x => x.RecieverUserId, x => x.MapFrom(m => m.RecieverUserId))
                 .ForMember(x => x.DateOfSending, x => x.MapFrom(m => m.DateOfSending));
 
             CreateMap<UserRto, UserIdentityBlo>()

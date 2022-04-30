@@ -8,10 +8,10 @@ namespace NewServer.BuisnessLogicCore.Interfaces
 {
    public interface IUserService
     {
-        Task<UserInformationBlo> Register(UserIdentityBlo userIdentityBlo);
+        Task<UserInformationBlo> Register( UserIdentityBlo userIdentityBlo);
         Task<UserInformationBlo> Get(int userId);
-        Task<UserInformationBlo> Update(UserInformationBlo userInformationBlo);
-        Task<UserInformationBlo> Authenticate(UserIdentityBlo userIdentityBlo);
+        Task<UserInformationBlo> Update( UserInformationBlo userInformationBlo);
+        Task<UserInformationBlo> Authenticate( UserIdentityBlo userIdentityBlo);
         
         Task Delete(int userId);
     }

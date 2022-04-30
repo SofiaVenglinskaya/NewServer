@@ -24,17 +24,18 @@ namespace NewServer.BuisnessLogic
             _mapper = mapper;
             _context = context;
         }
-        [HttpPatch("change")]
-        public async Task<MessageBlo> Change(MessageBlo messageBlo)
-        {
-            MessageRto message = await _context.Message
-                .FirstOrDefaultAsync(x => x.Text == messageBlo.Text);
 
-            message.Text = messageBlo.Text == null ? message.Text : messageBlo.Text;
+        public async Task<MessageBlo> Change(int messageId, MessageBlo messageBlo)
+        {
+             MessageRto message = await _context.Message
+                .FirstOrDefaultAsync(x => x.Id == messageId);
+            
+
+            message.Text = messageBlo.Text ?? message.Text;
             MessageBlo messageText = _mapper.Map<MessageBlo>(message);
             return messageBlo;
         }
-        [HttpDelete("delete")]
+
         public async Task Delete(int messageId)
         {
             var message = await _context.Message
@@ -44,12 +45,12 @@ namespace NewServer.BuisnessLogic
             _context.Message.Remove(message);
             await _context.SaveChangesAsync();
         }
-        [HttpGet("get")]
+        
         public async Task<List<MessageBlo>> Get(int userId, int friendId)
         {
             var messages = await _context.Message.
                 Where(e => e.RecieverUserId == userId && e.SenderUserId == friendId).ToListAsync();
-            if (messages == null || messages.Count < 1) throw new ArgumentNullException(nameof(messages));
+            if (messages == null) throw new ArgumentNullException(nameof(messages));
             List<MessageBlo> messagesBlo = new List<MessageBlo>();
             for (int i = 0; i < messages.Count; i++)
             {
@@ -57,14 +58,23 @@ namespace NewServer.BuisnessLogic
             }
             return messagesBlo;
         }
-        [HttpPost("send")]
+        
         public async Task<MessageBlo> Send(MessageBlo messageBlo)
         {
             MessageRto messageRto = new MessageRto()
             {
                 Text = messageBlo.Text!,
-                SenderUser = messageBlo.SenderUser!,
-                RecieverUser = messageBlo.RecieverUser!,
+                SenderUserId = messageBlo.SenderUserId!,
+                RecieverUserId = messageBlo.RecieverUserId!,
+                DateOfSending = messageBlo.DateOfSending
+
+            };
+
+            MessageRto messagerto = new MessageRto()
+            {
+                Text = messageBlo.Text!,
+                SenderUserId = messageBlo.RecieverUserId!,
+                RecieverUserId = messageBlo.SenderUserId!,
                 DateOfSending = messageBlo.DateOfSending
 
             };

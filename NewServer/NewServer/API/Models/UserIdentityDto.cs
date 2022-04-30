@@ -7,7 +7,7 @@ namespace NewServer.API.Models
 {
     public class UserIdentityDto
     {
-        public string? Login { get; set; }
-        public string? Password { get; set; }
+        public string Login { get; set; }
+        public string Password { get; set; }
     }
 }

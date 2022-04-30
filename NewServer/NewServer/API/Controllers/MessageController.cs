@@ -50,15 +50,15 @@ namespace NewServer.API.Controllers
             {
                 return BadRequest(e.Message);
             }
-            return Ok(_mapper.Map<MessageBlo>(messageBlo));
+            return Ok(_mapper.Map<List<MessageBlo>>(messageBlo));
         }
 
-        [HttpPost("change")]
-        public async Task<ActionResult<MessageBlo>> Change(MessageBlo messageBlo)
+        [HttpPatch("change/{messageId}")]
+        public async Task<ActionResult<MessageBlo>> Change([FromRoute]int messageId, [FromBody]MessageBlo messageBlo)
         {
             try
             {
-                messageBlo = await _messageService.Change(messageBlo);
+                messageBlo = await _messageService.Change( messageId, messageBlo);
             }
             catch (BadRequestExeption e)
             {

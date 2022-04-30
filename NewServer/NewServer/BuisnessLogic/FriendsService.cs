@@ -36,7 +36,7 @@ namespace NewServer.BuisnessLogic
         {
             var friendsList = await _context.Friends.
                 Where(e => e.FirstUserId == userId && e.SecondUserId == friendId).ToListAsync();
-            if (friendsList == null || friendsList.Count < 1) throw new ArgumentNullException(nameof(friendsList));
+            if (friendsList == null) throw new ArgumentNullException(nameof(friendsList));
             List<FriendsBlo> friendsBlo = new List<FriendsBlo>();
             for (int i = 0; i < friendsList.Count; i++)
             {

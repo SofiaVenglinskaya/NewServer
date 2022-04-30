@@ -41,11 +41,11 @@ namespace NewServer.API.Controllers
         }
 
         [HttpPatch("update")]
-        public async Task<ActionResult<UserInformationBlo>> Update(UserInformationBlo userInformationBlo)
+        public async Task<ActionResult<UserInformationBlo>> Update( UserInformationBlo userInformationBlo)
         {
             try
             {
-                userInformationBlo = await _userService.Update(userInformationBlo);
+                userInformationBlo = await _userService.Update( userInformationBlo);
             }
             catch(BadRequestExeption e)
             {
@@ -85,12 +85,12 @@ namespace NewServer.API.Controllers
             
         }
         [HttpGet("auth")]
-        public async Task<ActionResult<UserInformationBlo>> AuthAuthenticate(UserIdentityBlo userIdentityBlo)
+        public async Task<ActionResult<UserInformationBlo>> AuthAuthenticate( [FromBody]UserIdentityBlo userIdentityBlo)
         {
             UserInformationBlo userInformationBlo;
             try
             {
-                userInformationBlo = await _userService.Authenticate(userIdentityBlo);
+                userInformationBlo = await _userService.Authenticate( userIdentityBlo);
             }
             catch (BadRequestExeption e)
             {

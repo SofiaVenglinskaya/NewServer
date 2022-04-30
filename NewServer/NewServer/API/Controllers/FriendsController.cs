@@ -36,7 +36,7 @@ namespace NewServer.API.Controllers
             {
                 return BadRequest(e.Message);
             }
-            return Ok(_mapper.Map<FriendsBlo>(friendsBlo));
+            return Ok(_mapper.Map<List<FriendsBlo>>(friendsBlo));
         }
 
         [HttpDelete("delete/{userId}/{friendId}")]

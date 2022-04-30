@@ -26,7 +26,7 @@ namespace NewServer.BuisnessLogic
         }
         public async Task<UserInformationBlo> Authenticate(UserIdentityBlo userIdentityBlo)
         {
-            UserRto? user = await _context.User
+            UserRto user = await _context.User
                 .AsNoTracking()
                 .FirstOrDefaultAsync(x => x.Login.ToLower() == userIdentityBlo.Login!.ToLower() && x.Password == userIdentityBlo.Password!);
             if (user == null)
@@ -78,13 +78,16 @@ namespace NewServer.BuisnessLogic
 
         public async Task<UserInformationBlo> Update(UserInformationBlo userInformationBlo)
         {
-            UserRto? user = await _context.User
-               
+            UserRto user = await _context.User
+
                 .FirstOrDefaultAsync(x => x.Login.ToLower() == userInformationBlo.Login!.ToLower());
-            
+
             user.Login = userInformationBlo.Login == null ? user.Login : userInformationBlo.Login;
             user.Name = userInformationBlo.Name == null ? user.Name : userInformationBlo.Name;
-            
+            user.Surname = userInformationBlo.Surname == null ? user.Surname : userInformationBlo.Surname;
+
+
+
 
             await _context.SaveChangesAsync();
             UserInformationBlo userInformation = _mapper.Map<UserInformationBlo>(user);
