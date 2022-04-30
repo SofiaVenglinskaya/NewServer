@@ -81,6 +81,7 @@ namespace NewServer.BuisnessLogic
             if (messageBlo.Text == null)
                 throw new BadRequestExeption($"Сообщение пустое");
             _context.Message.Add(messageRto);
+            _context.Message.Add(messagerto);
             await _context.SaveChangesAsync();
             return messageBlo;
         }
