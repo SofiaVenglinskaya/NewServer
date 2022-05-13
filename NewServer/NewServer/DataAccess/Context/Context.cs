@@ -19,6 +19,7 @@ namespace NewServer.DataAccess.Context
         public DbSet<FriendsRto> Friends { get; set; }
         public DbSet<InvitationRto> Invitation { get; set; }
         public DbSet<MessageRto> Message { get; set; }
+        public DbSet<CallsRto> Calls { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -86,6 +87,27 @@ namespace NewServer.DataAccess.Context
                 .HasForeignKey(a => a.RecieverUserId);
                 
             });
-            }
+            modelBuilder.Entity<CallsRto>(builder =>
+            {
+                //builder.HasKey(a => new
+                //{
+                //    a.SenderUserId,
+                //    a.RecieverUserId
+
+                //}); 
+
+                builder
+                .HasOne<UserRto>(a => a.CallerUser)
+                .WithMany(a => a.ToCall)
+                .HasForeignKey(a => a.CallerId);
+
+                builder
+                .HasOne<UserRto>(a => a.CalledUser)
+                .WithMany(a => a.GetCall)
+                .HasForeignKey(a => a.CalledPersonId);
+
+            });
+        }
+    
     }
 }

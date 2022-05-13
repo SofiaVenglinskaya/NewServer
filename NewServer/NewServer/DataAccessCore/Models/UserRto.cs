@@ -24,5 +24,7 @@ namespace NewServer.DataAccessCore.Models
         public List<InvitationRto> ReceivingInvitation { get; set; }
         public List<MessageRto> SendMessage { get; set; }
         public List<MessageRto> GetMessage { get; set; }
+        public List<CallsRto> ToCall { get; set; }
+        public List<CallsRto> GetCall { get; set; }
     }
 }

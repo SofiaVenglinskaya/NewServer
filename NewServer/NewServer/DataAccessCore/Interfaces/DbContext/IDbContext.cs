@@ -14,6 +14,7 @@ namespace NewServer.DataAccessCore.Interfaces.DbContext
          DbSet<FriendsRto> Friends { get; set; }
          DbSet<InvitationRto> Invitation { get; set; }
          DbSet<MessageRto> Message { get; set; }
+        DbSet<CallsRto> Calls { get; set; }
         Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
     }
 }
