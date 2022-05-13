@@ -14,6 +14,7 @@ namespace NewServer.DataAccessCore.Models
         public string Surname { get; set; }
         public string Password { get; set; }
         public string Login { get; set; }
+        public string Photo { get; set; }
         public bool IsDeleted { get; set; } 
 
         public List<FriendsRto> FirstFriend { get; set; }

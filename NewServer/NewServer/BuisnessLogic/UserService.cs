@@ -85,6 +85,7 @@ namespace NewServer.BuisnessLogic
             user.Login = userInformationBlo.Login == null ? user.Login : userInformationBlo.Login;
             user.Name = userInformationBlo.Name == null ? user.Name : userInformationBlo.Name;
             user.Surname = userInformationBlo.Surname == null ? user.Surname : userInformationBlo.Surname;
+            user.Photo = userInformationBlo.Photo == null ? user.Photo : userInformationBlo.Photo;
 
 
 

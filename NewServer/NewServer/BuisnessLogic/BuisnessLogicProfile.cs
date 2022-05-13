@@ -16,7 +16,9 @@ namespace NewServer.BuisnessLogic
                 
                 .ForMember(x => x.Login, x => x.MapFrom(m => m.Login))
                 .ForMember(x => x.Name, x => x.MapFrom(m => m.Name))
+                .ForMember(x => x.Photo, x => x.MapFrom(m => m.Photo))
                 .ForMember(x => x.Surname, x => x.MapFrom(m => m.Surname));
+
 
             CreateMap<FriendsRto, FriendsBlo>()
                 .ForMember(x => x.FirstUserId, x => x.MapFrom(m => m.FirstUserId))

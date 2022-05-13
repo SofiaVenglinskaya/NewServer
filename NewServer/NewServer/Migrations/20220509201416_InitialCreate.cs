@@ -80,15 +80,16 @@ namespace NewServer.Migrations
                 name: "Message",
                 columns: table => new
                 {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Text = table.Column<string>(nullable: true),
                     SenderUserId = table.Column<int>(nullable: false),
                     RecieverUserId = table.Column<int>(nullable: false),
-                    Id = table.Column<int>(nullable: false),
-                    Text = table.Column<string>(nullable: true),
                     DateOfSending = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Message", x => new { x.SenderUserId, x.RecieverUserId });
+                    table.PrimaryKey("PK_Message", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Message_User_RecieverUserId",
                         column: x => x.RecieverUserId,
@@ -117,6 +118,11 @@ namespace NewServer.Migrations
                 name: "IX_Message_RecieverUserId",
                 table: "Message",
                 column: "RecieverUserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Message_SenderUserId",
+                table: "Message",
+                column: "SenderUserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

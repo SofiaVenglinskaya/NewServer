@@ -9,7 +9,7 @@ using NewServer.DataAccess.Context;
 namespace NewServer.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20220430144133_InitialCreate")]
+    [Migration("20220509201416_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -62,24 +62,27 @@ namespace NewServer.Migrations
 
             modelBuilder.Entity("NewServer.DataAccessCore.Models.MessageRto", b =>
                 {
-                    b.Property<int>("SenderUserId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("RecieverUserId")
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("DateOfSending")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("Id")
+                    b.Property<int>("RecieverUserId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("SenderUserId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Text")
                         .HasColumnType("TEXT");
 
-                    b.HasKey("SenderUserId", "RecieverUserId");
+                    b.HasKey("Id");
 
                     b.HasIndex("RecieverUserId");
+
+                    b.HasIndex("SenderUserId");
 
                     b.ToTable("Message");
                 });
