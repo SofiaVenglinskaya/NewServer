@@ -23,7 +23,7 @@ namespace NewServer.BuisnessLogic
         public async Task<List<CallsBlo>> Get(int userId, int friendId)
         {
             var calls = await _context.Calls.
-                Where(e => e.CallerId == userId && e.CalledPersonId == friendId || e.CalledPersonId == friendId && e.CallerId == userId).ToListAsync();
+                Where(e => e.CallerUserId == userId && e.CalledUserId == friendId || e.CalledUserId == friendId && e.CallerUserId == userId).ToListAsync();
             if (calls == null) throw new ArgumentNullException(nameof(calls));
             List<CallsBlo> callsBlo = new List<CallsBlo>();
             for (int i = 0; i < calls.Count; i++)
@@ -38,8 +38,8 @@ namespace NewServer.BuisnessLogic
             CallsRto callRto = new CallsRto()
             {
                 
-                CallerId = callsBlo.CallerId!,
-                CalledPersonId = callsBlo.CalledId!,
+                CallerUserId = callsBlo.CallerId!,
+                CalledUserId = callsBlo.CalledId!,
                 DateOfCall = callsBlo.DateOfCall
 
             };

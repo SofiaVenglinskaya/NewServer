@@ -29,9 +29,12 @@ namespace NewServer.BuisnessLogic
         {
              MessageRto message = await _context.Message
                 .FirstOrDefaultAsync(x => x.Id == messageId);
-            
 
-            message.Text = messageBlo.Text ?? message.Text;
+            if (message == null)
+                    throw new BadRequestExeption($"Сообщение не существует");
+
+
+            message.Text = messageBlo.Text == null ? "" : message.Text;
             MessageBlo messageText = _mapper.Map<MessageBlo>(message);
             return messageBlo;
         }
@@ -66,7 +69,7 @@ namespace NewServer.BuisnessLogic
                 Text = messageBlo.Text!,
                 SenderUserId = messageBlo.SenderUserId!,
                 RecieverUserId = messageBlo.RecieverUserId!,
-                DateOfSending = messageBlo.DateOfSending
+                DateOfSending = DateTime.Now
 
             };
 
@@ -76,7 +79,7 @@ namespace NewServer.BuisnessLogic
             _context.Message.Add(messageRto);
             
             await _context.SaveChangesAsync();
-           return  _mapper.Map<MessageBlo>(messageRto);
+           return messageBlo;
             
         }
     }

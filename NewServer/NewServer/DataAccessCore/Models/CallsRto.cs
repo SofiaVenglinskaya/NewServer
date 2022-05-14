@@ -10,9 +10,9 @@ namespace NewServer.DataAccessCore.Models
     public class CallsRto
     {
         public int Id { get; set; }
-        public int CallerId { get; set; }
+        public int CallerUserId { get; set; }
         public UserRto CallerUser { get; set; }
-        public int CalledPersonId { get; set; }
+        public int CalledUserId { get; set; }
         public UserRto CalledUser { get; set; }
         public DateTime DateOfCall { get; set; }
     }

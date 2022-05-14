@@ -9,7 +9,7 @@ using NewServer.DataAccess.Context;
 namespace NewServer.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20220509201416_InitialCreate")]
+    [Migration("20220514140209_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -17,6 +17,30 @@ namespace NewServer.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.22");
+
+            modelBuilder.Entity("NewServer.DataAccessCore.Models.CallsRto", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("CalledUserId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("CallerUserId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("DateOfCall")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CalledUserId");
+
+                    b.HasIndex("CallerUserId");
+
+                    b.ToTable("Calls");
+                });
 
             modelBuilder.Entity("NewServer.DataAccessCore.Models.FriendsRto", b =>
                 {
@@ -105,12 +129,30 @@ namespace NewServer.Migrations
                     b.Property<string>("Password")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("Photo")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Surname")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
                     b.ToTable("User");
+                });
+
+            modelBuilder.Entity("NewServer.DataAccessCore.Models.CallsRto", b =>
+                {
+                    b.HasOne("NewServer.DataAccessCore.Models.UserRto", "CalledUser")
+                        .WithMany("GetCall")
+                        .HasForeignKey("CalledUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("NewServer.DataAccessCore.Models.UserRto", "CallerUser")
+                        .WithMany("ToCall")
+                        .HasForeignKey("CallerUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("NewServer.DataAccessCore.Models.FriendsRto", b =>

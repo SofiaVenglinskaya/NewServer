@@ -17,11 +17,39 @@ namespace NewServer.Migrations
                     Surname = table.Column<string>(nullable: true),
                     Password = table.Column<string>(nullable: true),
                     Login = table.Column<string>(nullable: true),
+                    Photo = table.Column<string>(nullable: true),
                     IsDeleted = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_User", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Calls",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    CallerUserId = table.Column<int>(nullable: false),
+                    CalledUserId = table.Column<int>(nullable: false),
+                    DateOfCall = table.Column<DateTime>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Calls", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Calls_User_CalledUserId",
+                        column: x => x.CalledUserId,
+                        principalTable: "User",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Calls_User_CallerUserId",
+                        column: x => x.CallerUserId,
+                        principalTable: "User",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -105,6 +133,16 @@ namespace NewServer.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_Calls_CalledUserId",
+                table: "Calls",
+                column: "CalledUserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Calls_CallerUserId",
+                table: "Calls",
+                column: "CallerUserId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Friends_SecondUserId",
                 table: "Friends",
                 column: "SecondUserId");
@@ -127,6 +165,9 @@ namespace NewServer.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Calls");
+
             migrationBuilder.DropTable(
                 name: "Friends");
 

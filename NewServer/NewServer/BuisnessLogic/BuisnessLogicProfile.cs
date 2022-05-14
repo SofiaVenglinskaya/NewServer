@@ -36,9 +36,9 @@ namespace NewServer.BuisnessLogic
                 .ForMember(x => x.DateOfSending, x => x.MapFrom(m => m.DateOfSending));
 
             CreateMap<CallsRto, CallsBlo>()
-                 .ForMember(x => x.Id, x => x.MapFrom(m => m.Id))
-                .ForMember(x => x.CallerId, x => x.MapFrom(m => m.CallerId))
-                .ForMember(x => x.CalledId, x => x.MapFrom(m => m.CalledPersonId))
+                 
+                .ForMember(x => x.CallerId, x => x.MapFrom(m => m.CallerUserId))
+                .ForMember(x => x.CalledId, x => x.MapFrom(m => m.CalledUserId))
                 .ForMember(x => x.DateOfCall, x => x.MapFrom(m => m.DateOfCall));
 
             CreateMap<UserRto, UserIdentityBlo>()

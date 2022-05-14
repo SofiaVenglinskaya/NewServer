@@ -69,12 +69,12 @@ namespace NewServer.DataAccess.Context
 
            modelBuilder.Entity<MessageRto>(builder =>
             {
-                //builder.HasKey(a => new
-                //{
-                //    a.SenderUserId,
-                //    a.RecieverUserId
+                builder.HasKey(a => new
+                {
+                    a.Id
+                    
 
-                //}); 
+                });
 
                 builder
                 .HasOne<UserRto>(a => a.SenderUser)
@@ -99,12 +99,12 @@ namespace NewServer.DataAccess.Context
                 builder
                 .HasOne<UserRto>(a => a.CallerUser)
                 .WithMany(a => a.ToCall)
-                .HasForeignKey(a => a.CallerId);
+                .HasForeignKey(a => a.CallerUserId);
 
                 builder
                 .HasOne<UserRto>(a => a.CalledUser)
                 .WithMany(a => a.GetCall)
-                .HasForeignKey(a => a.CalledPersonId);
+                .HasForeignKey(a => a.CalledUserId);
 
             });
         }
