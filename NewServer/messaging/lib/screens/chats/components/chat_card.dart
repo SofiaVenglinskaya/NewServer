@@ -1,8 +1,9 @@
 
 import 'package:flutter/material.dart';
 
+import '../../../chat/Chat.dart';
 import '../../../constants.dart';
-import '../../../models/Chat.dart';
+
 
 class ChatCard extends StatelessWidget {
   const ChatCard({

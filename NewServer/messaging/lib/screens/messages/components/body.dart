@@ -1,8 +1,9 @@
 
 import 'package:flutter/material.dart';
 
+import '../../../chat/ChatMessage.dart';
 import '../../../constants.dart';
-import '../../../models/ChatMessage.dart';
+
 import 'chat_input_field.dart';
 import 'message.dart';
 

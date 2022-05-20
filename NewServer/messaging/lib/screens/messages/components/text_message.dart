@@ -1,8 +1,9 @@
 
 import 'package:flutter/material.dart';
 
+import '../../../chat/ChatMessage.dart';
 import '../../../constants.dart';
-import '../../../models/ChatMessage.dart';
+
 
 class TextMessage extends StatelessWidget {
   const TextMessage({

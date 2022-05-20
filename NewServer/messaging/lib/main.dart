@@ -1,6 +1,9 @@
 
+import 'dart:html';
+
 import 'package:flutter/material.dart';
-import 'package:messaging/screens/signinOrSignUp/signin_or_signup_screen.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:messaging/services/login.dart';
 import 'package:messaging/theme.dart';
 
 void main() {
@@ -10,6 +13,8 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
+  static const storage = FlutterSecureStorage();
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -18,7 +23,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: lightThemeData(context),
       darkTheme: darkThemeData(context),
-      home: SigninOrSignupScreen(),
+      home: SplashPage(),
     );
   }
 }

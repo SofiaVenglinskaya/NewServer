@@ -84,7 +84,7 @@ namespace NewServer.API.Controllers
             return Ok();
             
         }
-        [HttpGet("auth")]
+        [HttpPost("auth")]
         public async Task<ActionResult<UserInformationBlo>> AuthAuthenticate( [FromBody]UserIdentityBlo userIdentityBlo)
         {
             UserInformationBlo userInformationBlo;
