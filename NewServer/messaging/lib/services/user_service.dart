@@ -31,7 +31,7 @@ class UserService {
 
     Map<String, dynamic> headers = {
       //ConfigApiService.microserviceApiKeyHeadName: ConfigApiService.microserviceApiKey,
-      'Content-Type': 'aplication/json',
+      'Content-Type': 'application/json',
     };
 
     Dio dio =
@@ -67,11 +67,7 @@ class UserService {
             data: null, statusCode: null, responseText: 'Что-то пошло не так');
       }
     }
-    return ActionResult(
-      data: null,
-      statusCode: null,
-      responseText: null
-    );
+    return ActionResult(data: null, statusCode: null, responseText: null);
   }
 
   static Future<ActionResult<UserInfoModel>> authUserApi(
@@ -89,7 +85,7 @@ class UserService {
     //       data: null,
     //       statusCode: null,
     //       responseText: 'Пароль не должен быт пустым');
-   // }
+    // }
 
     UserIdentityModel userIdentityModel =
         UserIdentityModel(login: login, password: password);
@@ -97,15 +93,16 @@ class UserService {
 
     Map<String, dynamic> headers = {
       //ConfigApiService.microserviceApiKeyHeadName: ConfigApiService.microserviceApiKey,
-      'Content-Type': 'aplication/json',
+      'Content-Type': 'application/json',
     };
 
     Dio dio =
         Dio(BaseOptions(headers: headers, responseType: ResponseType.json));
 
     try {
-      Response<String> response =
-          await dio.post("http://localhost:52924/api/User/auth", data: jsonUserIdenityModel);
+      Response<String> response = await dio.post(
+          "http://localhost:52924/api/User/auth",
+          data: jsonUserIdenityModel);
       if (response.statusCode == 200) {
         String? responseBody = response.data;
         UserInfoModel user = UserInfoModel.fromRawJson(responseBody!);
@@ -133,10 +130,6 @@ class UserService {
             data: null, statusCode: null, responseText: 'Что-то пошло не так');
       }
     }
-    return ActionResult(
-      data: null,
-      statusCode: null,
-      responseText: null
-    );
+    return ActionResult(data: null, statusCode: null, responseText: null);
   }
 }

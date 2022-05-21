@@ -52,7 +52,7 @@ namespace NewServer
             app.UseHttpsRedirection();
 
             app.UseRouting();
-
+            app.UseCors(options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             app.UseAuthorization();
 
             using var scope = app.ApplicationServices.CreateScope();

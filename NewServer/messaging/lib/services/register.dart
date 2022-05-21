@@ -1,17 +1,14 @@
-
 import 'package:flutter/material.dart';
-import 'package:messaging/services/register.dart';
 import 'package:messaging/services/user_service.dart';
 
 import '../models/models/user_model.dart';
 import '../screens/chats/chats_screen.dart';
 import 'action_result_generic (1).dart';
 
-
-class SplashPage extends StatelessWidget {
- SplashPage({Key? key}) : super(key: key);
-TextEditingController login = TextEditingController();
-TextEditingController password = TextEditingController();
+class RegisterPage extends StatelessWidget {
+  RegisterPage({Key? key}) : super(key: key);
+  TextEditingController login = TextEditingController();
+  TextEditingController password = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,25 +37,23 @@ TextEditingController password = TextEditingController();
           SizedBox(
             child: TextField(
               controller: login,
-              decoration: InputDecoration(hintText: "Введите логин") ,
+              decoration: InputDecoration(hintText: "Введите логин"),
             ),
           ),
           SizedBox(
             child: TextField(
               controller: password,
-              decoration: InputDecoration(hintText: "Введите пароль") ,
+              decoration: InputDecoration(hintText: "Введите пароль"),
             ),
           ),
           const SizedBox(height: 25),
           GestureDetector(
             onTap: () async {
-              ActionResult<UserInfoModel> user = await UserService.authUserApi(login.text, password.text);
-              if(user.data == null)
-              return;
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (builder) => ChatsScreen()));
+              ActionResult<UserInfoModel> user =
+                  await UserService.registerUserApi(login.text, password.text);
+              if (user.data == null) return;
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (builder) => ChatsScreen()));
             },
             child: Container(
               padding: const EdgeInsets.symmetric(
@@ -70,7 +65,7 @@ TextEditingController password = TextEditingController();
                 borderRadius: BorderRadius.circular(10.0),
               ),
               child: const Text(
-                'Sign In',
+                'Register',
                 style: TextStyle(
                   color: Color(0xFFFFFFFF),
                   fontSize: 16,
@@ -80,10 +75,7 @@ TextEditingController password = TextEditingController();
             ),
           ),
           TextButton(
-            onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (builder) => RegisterPage()));
-            },
+            onPressed: () {},
             child: Text(
               'Create an account',
               style: TextStyle(
